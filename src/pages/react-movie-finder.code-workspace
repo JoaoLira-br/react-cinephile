@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../movie-finder"
+		},
+		{
+			"path": "../../../../week5/library-react-tutorial"
+		},
+		{
+			"path": "../../../../../../Desktop/netflix-clone"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "movie-finder"
+	}
+}
