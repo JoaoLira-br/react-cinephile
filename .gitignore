@@ -24,4 +24,4 @@ diary.md
 *.njsproj
 *.sln
 *.sw?
-/api/*
+
