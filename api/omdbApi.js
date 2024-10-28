@@ -1,6 +1,11 @@
 import { ligatures } from "@fortawesome/free-solid-svg-icons/fa0";
 
-const apiKey = "10b6f205";
+
+
+
+
+
+const apiKey = import.meta.env.VITE_OMDB_API_KEY;
 let requestURL = `https://www.omdbapi.com/?apikey=${apiKey}&`;
 
 // function to append the query to the base URL
