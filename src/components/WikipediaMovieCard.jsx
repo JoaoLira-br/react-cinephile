@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const MovieCard = ({ movie }) => {
+const OMDBMovieCard = ({ movie }) => {
   return (
     
-    <Link to={`/movie/${movie.id}`} className="movie">
+    <Link to={`/movies/${movie.imdbID}`} className="movie">
     <figure className="img__movie--wrapper">
         <img
         src={movie.Poster}
@@ -23,4 +23,4 @@ const MovieCard = ({ movie }) => {
   )
 }
 
-export default MovieCard
+export default OMDBMovieCard

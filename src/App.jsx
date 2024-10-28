@@ -18,12 +18,15 @@ function App() {
 
           <Route path="/" exact element={<Home />} />
           <Route
-            path="/movies/"
+            path="/movies"
+            element={<Movies />}
+          />
+          <Route
+            path="/movies/search/:query"
             element={<Movies />}
           />
           <Route
             path="/movies/:id"
-            
             element={<Movie />}
           />
           </Routes>

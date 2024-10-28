@@ -10,7 +10,7 @@ const Home = () => {
   let navigate = useNavigate();
 
   function browseMovie(){
-    navigate(`/movies/search=${encodeURIComponent(search)}`);
+    navigate(`/movies/search/${encodeURIComponent(search)}`);
   }
   return (
     <section id="landing">

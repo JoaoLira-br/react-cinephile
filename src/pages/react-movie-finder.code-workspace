@@ -1,15 +1,23 @@
 {
 	"folders": [
 		{
+			"name": "react-movie-finder",
 			"path": "../.."
 		},
 		{
+			"name": "wikipedia-movie-data",
+			"path": "../../../wikipedia-movie-data"
+		},
+		{
+			"name": "movie-finder",
 			"path": "../../../movie-finder"
 		},
 		{
+			"name": "library-react-tutorial",
 			"path": "../../../../week5/library-react-tutorial"
 		},
 		{
+			"name": "netflix-clone",
 			"path": "../../../../../../Desktop/netflix-clone"
 		}
 	],
