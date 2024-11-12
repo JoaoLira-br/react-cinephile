@@ -22,6 +22,7 @@ export const fetchMoviesByGenre = (genreString) => {
     const filteredMovies = allMovies.filter(movie => 
         movie.genres.some(movieGenre => genres.includes(movieGenre.toLowerCase()))
     );
+    allMovies.length = 0;
 
     const shuffledMovies = filteredMovies.sort(() => Math.random() - 0.5);
     

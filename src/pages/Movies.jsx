@@ -7,6 +7,7 @@ import { fetchMovies, fetchMovieDetails } from "../../api/omdbApi";
 import dummyData from "../../api/dummy.json";
 import OMDBMovieCard from "../components/OMDBMovieCard";
 import MovieNotFound from "../components/MovieNotFound";
+import Skeleton from "../UI/Skeleton";
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -25,8 +26,12 @@ const Movies = () => {
   };
 
   useEffect(() => {
+
+
     if (moviesParam.query && moviesParam.query !== "undefined") {
+
       searchMovie();
+
       return;
     }
     let fastMovies = dummyData?.fast?.Search;
@@ -38,19 +43,19 @@ const Movies = () => {
 
     fastMovies = fastMovies.length > 8 ? fastMovies.slice(0, 8) : fastMovies;
     starMovies = starMovies.length > 8 ? starMovies.slice(0, 8) : starMovies;
-    console.log(`fastMovies ${fastMovies[0].Director}`);
+
     // harryPotterMovies = harryPotterMovies.length > 12 ? harryPotterMovies.slice(0, 12) : harryPotterMovies;
     Math.random() > 0.5 ? setMovies(starMovies) : setMovies(fastMovies);
+
+
   }, []);
 
   async function searchMovie() {
-    setLoading(true);
-    console.log(`searchTerm ${search}`);
-    console.log(`moviesParam ${moviesParam.query}`);
+  
     const searchQuery = search || moviesParam.query;
     const newUrl = `/movies/search/${encodeURIComponent(searchQuery)}`;
     window.history.replaceState({}, "", newUrl);
-    console.log(`searchQuery ${searchQuery}`);
+    setLoading(true);
     const resMovies = await fetchMovies(searchQuery);
     if (resMovies.Response === "True") {
       let resMoviesDetailed = await Promise.all(
@@ -65,7 +70,7 @@ const Movies = () => {
       setMovieFound(false);
       setMovies([]);
     }
-    setLoading(false);
+    setLoading(false)
   }
   function filterMovies(e) {
     setFilter(e.target.value);
@@ -108,12 +113,11 @@ const Movies = () => {
           <div className="row">
             <div className="movies__search">
               <h2 className="movies__search--title">
-              
                 Search for movies in the search bar{" "}
                 <span className="spinner__container">
-                  {loading && 
-                  <FontAwesomeIcon icon={faSpinner} className="fa-spinner" />
-                  }
+                  {loading && (
+                    <FontAwesomeIcon icon={faSpinner} className="fa-spinner" />
+                  )}
                 </span>
               </h2>
 
@@ -130,14 +134,21 @@ const Movies = () => {
               </select>
             </div>
             <div className="movies--container">
-              {movies.length > 0 ? (
-                movies.map((movie) => {
-                  return <OMDBMovieCard key={movie.imdbID} movie={movie} />;
-                })
-              ) : (
+             {loading ? (<> {console.log(`loading`)}
+             {Array.from({length: 8}).map((_, index) => (
+            <Skeleton key={index} width={`250px`} height={`382px`} borderRadius={`4%`}></Skeleton>
+             ))}
+             </>) : (<>
+              {movies.length === 0 ? (
                 <MovieNotFound />
+              ) : (
+                <>
+                  {movies.map((movie) => {
+                    return <OMDBMovieCard key={movie.imdbID} movie={movie} />;
+                  })}
+                </>
               )}
-              {/* <MovieNotFound /> */}
+             </>)}
             </div>
           </div>
         </div>

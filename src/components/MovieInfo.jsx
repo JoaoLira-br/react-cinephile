@@ -4,18 +4,46 @@ import dummyData from "../../api/dummy.json";
 
 
 import OMDBMovieCard from "./OMDBMovieCard";
+import Skeleton from "../UI/Skeleton";
 
 
-const MovieInfo = ({ movie }) => {
+const MovieInfo = ({ movie, loading}) => {
 
   return (
     <div className="container">
       <div className="row">
         <div className="movie__info--container">
+          {loading ? (
+            <> 
+            {console.log(`loading`)}
+
+            <Skeleton width={`50%`} minWidth={`300px`} height={`620px`} borderRadius={`4%`}></Skeleton>
+
+            </>
+          ) : 
+          (<> 
           <figure className="movie__poster--wrapper">
             <img src={movie.Poster} alt="" className="movie__poster--img" />
-          </figure>
+          </figure>      
+          </>)}
           <div className="movie__info">
+            {loading ? (<> 
+            <Skeleton width={`80%`} height={`48px`} borderRadius={`4%`} margin={`0 0 24px 0`}></Skeleton>
+            <Skeleton width={`75%`} height={`24px`} borderRadius={`4%`} margin={`0 0 8px 0`}></Skeleton>
+            <Skeleton width={`75%`} height={`24px`} borderRadius={`4%`} margin={`0 0 8px 0`}></Skeleton>
+            <Skeleton width={`75%`} height={`24px`} borderRadius={`4%`} margin={`0 0 8px 0`}></Skeleton>
+            <Skeleton width={`75%`} height={`24px`} borderRadius={`4%`} margin={`0 0 8px 0`}></Skeleton>
+            <Skeleton width={`75%`} height={`24px`} borderRadius={`4%`} margin={`0 0 8px 0`}></Skeleton>
+            <Skeleton width={`75%`} height={`24px`} borderRadius={`4%`} margin={`0 0 8px 0`}></Skeleton>
+            <Skeleton width={`75%`} height={`24px`} borderRadius={`4%`} margin={`0 0 8px 0`}></Skeleton>
+            <Skeleton width={`75%`} height={`24px`} borderRadius={`4%`} margin={`0 0 8px 0`}></Skeleton>
+            <Skeleton width={`75%`} height={`64px`} borderRadius={`4%`} margin={`0 0 8px 0`}></Skeleton>
+            <Skeleton width={`75%`} height={`24px`} borderRadius={`4%`} margin={`0 0 8px 0`}></Skeleton>
+            <Skeleton width={`75%`} height={`24px`} borderRadius={`4%`} margin={`0 0 8px 0`}></Skeleton>
+            <Skeleton width={`75%`} height={`24px`} borderRadius={`4%`} margin={`0 0 8px 0`}></Skeleton>
+            
+            </>) : (<> 
+            
             <h2 className="movie__title">{movie.Title}</h2>
             <p className="movie__description">
               <b>Year:</b> {movie.Year}
@@ -59,6 +87,7 @@ const MovieInfo = ({ movie }) => {
             <p className="movie__description">
               <b>IMDB Votes:</b> {movie.imdbVotes}
             </p>
+            </>)}
           </div>
         </div>
       

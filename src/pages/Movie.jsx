@@ -11,6 +11,7 @@ import MoviesRecommended from '../components/MoviesRecommended';
 const Movie = () => {
   const { id } = useParams()
   const [movie, setMovie] = useState({})
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // console.log(`id: ${id}`);
@@ -19,16 +20,19 @@ const Movie = () => {
 
   }, [id])
   const fetchMovie = async () => {
+
     const resMovie = await fetchMovieDetails(id)
+
     // console.log(`resMovie: ${resMovie.Response}`);
     setMovie(resMovie)
+    setLoading(false)
 
   }
   return (
     <div>
       <NavBar theme={"white"} background={imgTheater}/>
-      <MovieInfo movie={movie}/>
-      {movie.Genre && <MoviesRecommended genre={movie.Genre} />}
+      <MovieInfo movie={movie} loading={loading}/>
+      {movie.Genre && <MoviesRecommended genre={movie.Genre} loading={loading}/>}
     </div>
   )
 }
