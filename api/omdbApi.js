@@ -1,10 +1,5 @@
 import { ligatures } from "@fortawesome/free-solid-svg-icons/fa0";
 
-
-
-
-
-
 const apiKey = import.meta.env.VITE_OMDB_API_KEY;
 let requestURL = `https://www.omdbapi.com/?apikey=${apiKey}&`;
 
@@ -23,7 +18,6 @@ function appendTitleQuery(title){
     return appendToBaseURL(`t=${title}`);
 }
 
-
 // function to fetch the movies from the API
 export async function fetchMovies(query) {
   // console.log(`fetchMovies ${query}`);
@@ -37,11 +31,15 @@ export async function fetchMovieDetails(imdbID) {
   return await response.json();
 }
 export async function fetchMovieByTitle(title){
-  const response = await fetch(appendTitleQuery(title));
-  return await response.json();
+  try{
+
+    const response = await fetch(appendTitleQuery(title));
+    return await response.json();
+
+  }catch(error){
+    console.log(`Error: ${error}`);
+  }
 
 }
-
-
 
 

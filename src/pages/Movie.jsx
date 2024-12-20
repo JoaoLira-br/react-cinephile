@@ -32,7 +32,7 @@ const Movie = () => {
     <div>
       <NavBar theme={"white"} background={imgTheater}/>
       <MovieInfo movie={movie} loading={loading}/>
-      {movie.Genre && <MoviesRecommended genre={movie.Genre} loading={loading}/>}
+      {movie.Genre && <MoviesRecommended genre={movie.Genre} title={movie.Title} loading={loading}/>}
     </div>
   )
 }

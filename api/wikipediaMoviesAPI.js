@@ -17,7 +17,8 @@ export const fetchMoviesByGenre = (genreString) => {
         ...movies2020
     ];
 
-    const genres = genreString.split(',').map(genre => genre.trim().toLowerCase());
+    // const genres = genreString.split(',').map(genre => genre.trim().toLowerCase());
+    const genres = genreString.toLowerCase();
 
     const filteredMovies = allMovies.filter(movie => 
         movie.genres.some(movieGenre => genres.includes(movieGenre.toLowerCase()))
@@ -25,6 +26,7 @@ export const fetchMoviesByGenre = (genreString) => {
     allMovies.length = 0;
 
     const shuffledMovies = filteredMovies.sort(() => Math.random() - 0.5);
-    
+    console.log(`shuffledMovies length: ${shuffledMovies.length}`);
+
     return shuffledMovies;
 }
