@@ -15,7 +15,7 @@ const MoviesRecommended = ({ genre, title }) => {
     const fetchTitles = async (title) => {
       suggestedMovies = await fetchRecommendedTitles(title);
       if(suggestedMovies === undefined || suggestedMovies.length === 0){
-        console.log(title);
+        // console.log(title);
         suggestedMovies = fetchMoviesByGenre(genre);
       }
 

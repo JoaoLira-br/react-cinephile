@@ -26,7 +26,7 @@ export const fetchMoviesByGenre = (genreString) => {
     allMovies.length = 0;
 
     const shuffledMovies = filteredMovies.sort(() => Math.random() - 0.5);
-    console.log(`shuffledMovies length: ${shuffledMovies.length}`);
+    // console.log(`shuffledMovies length: ${shuffledMovies.length}`);
 
     return shuffledMovies;
 }
